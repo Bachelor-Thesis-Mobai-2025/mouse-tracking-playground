@@ -210,7 +210,6 @@ The system captures a comprehensive set of mouse movement features:
 - StratifiedKFold cross-validation (5 folds) was used to maintain class distribution across all data splits
 - The best-performing fold was selected as the final model
 - Visualization outputs stored in various graph folders
-- Individual fold performance results available in log directories
 
 ## Technologies Used
 
