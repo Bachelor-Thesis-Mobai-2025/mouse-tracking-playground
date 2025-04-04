@@ -92,7 +92,7 @@ The application randomly selects from 5 unique layouts for each experiment sessi
 ### Feature Analysis
 ![Feature Importance](top_features_importance.png)
 ![Feature Importance Matrix](feature_analysis/correlation_matrix.png)
-- **`imp_feature_locator.py`**: Analyzes feature importance for deception detection
+- **`feature_analysis.py`**: Analyzes feature importance for deception detection
 - Most discriminative features include:
     - Acceleration changes
     - Velocity standard deviation
