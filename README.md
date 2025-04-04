@@ -202,7 +202,6 @@ The system captures a comprehensive set of mouse movement features:
 
 - Movement dynamics (acceleration change, velocity std) are the most discriminative features
 - Path efficiency and movement smoothness show significant differences between truthful and deceptive responses
-- Neural network architecture visualization available in `architecture.svg`
 - Multiple models explored:
     - GRU-based models with various optimization strategies (v1-v6)
     - LSTM models
