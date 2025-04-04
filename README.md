@@ -46,7 +46,7 @@ The repository contains multiple data collections and processing results:
 ├── convert.py                              # Data conversion utility
 ├── display.py                              # Data visualization tool
 ├── feature_importance.csv                  # CSV of feature importance scores
-├── feature_analysis.py                  # Feature importance analysis
+├── feature_analysis.py                     # Feature importance analysis
 ├── network_visualization.png               # Network visualization image
 ├── README.md                               # Project documentation
 ├── sample.json                             # Sample data format
@@ -54,7 +54,7 @@ The repository contains multiple data collections and processing results:
 ├── train.py                                # Base training script
 ├── train_GRU.py                            # GRU model training script
 ├── train_LSTM.py                           # LSTM model training script
-├── train_optim_GRU_SMOTE.py           # Optimized GRU with SMOTE copy
+├── train_optim_GRU_SMOTE.py                # Optimized GRU with SMOTE copy
 ├── train_optim_GRU_SMOTE_v3.py             # Optimized GRU with SMOTE v3
 ├── truncate.py                             # Trajectory preprocessing
 └── truncate_ext.py                         # Extended trajectory preprocessing
