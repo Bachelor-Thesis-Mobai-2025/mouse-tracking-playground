@@ -77,7 +77,7 @@ The application randomly selects from 5 unique layouts for each experiment sessi
 ### Data Collection (`app.py`, `script.js`)
 - Manages experiment flow
 - Randomizes question selection for each phase
-- Randomizes yes/no button positions
+- Swaps yes/no button positions randomly
 - Logs detailed mouse tracking data
 - Supports truthful and deceptive response phases
 
