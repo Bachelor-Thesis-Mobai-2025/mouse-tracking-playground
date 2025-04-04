@@ -42,7 +42,6 @@ The repository contains multiple data collections and processing results:
 ├── app.py                                  # Flask web application
 ├── architecture.svg                        # Neural network architecture diagram
 ├── confusion_matrix.png                    # Confusion matrix visualization
-├── Consent Form for Data Collection.pdf    # Data collection consent form
 ├── convert.py                              # Data conversion utility
 ├── display.py                              # Data visualization tool
 ├── feature_importance.csv                  # CSV of feature importance scores
