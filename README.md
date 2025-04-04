@@ -85,8 +85,7 @@ The application randomly selects from 5 unique layouts for each experiment sessi
 - **`truncate.py`**: Trims trajectory data after the last click event
 - **`truncate_ext.py`**: Extended preprocessing that also removes initial points where both x and y are 0
 - Multiple preprocessing approaches resulted in various dataset versions:
-    - `data_combined`: Combined data from multiple sources
-    - `data_new`: Fresh data collection
+    - `data_new`: Newest data collection
     - `*_truncated`: Trajectories trimmed after last click
     - `*_truncated_final`: Final version with optimized preprocessing
 
