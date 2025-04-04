@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question Tracker</title>
+</head>
+<body>
+
+<div class="container">
+    <div id="timer">Time on question: 0s</div>
+    <div id="question"></div>
+
+    <div id="map-container" style="display: none;">
+        <iframe id="location-map" title="Map" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="btn-group">
+        <button id="yes-btn" class="answer-btn">Yes</button>
+        <button id="no-btn" class="answer-btn">No</button>
+    </div>
+
+    <button id="next-btn">Next Question</button>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Choose random CSS file (1-5)
+        const layoutNumber = Math.floor(Math.random() * 5) + 1;
+
+        // Create link element for the random CSS
+        const layoutLink = document.createElement("link");
+        layoutLink.rel = "stylesheet";
+        // Fix: Use concatenation instead of template literals within Jinja
+        layoutLink.href = "{{ url_for('static', filename='layout-') }}" + layoutNumber + ".css";
+
+        // Append to head
+        document.head.appendChild(layoutLink);
+    });
+</script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

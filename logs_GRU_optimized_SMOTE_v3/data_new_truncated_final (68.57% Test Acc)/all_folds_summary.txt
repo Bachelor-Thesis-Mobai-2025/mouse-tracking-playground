@@ -1,0 +1,55 @@
+Summary of 5-fold cross-validation:
+
+Average metrics across all folds:
+  Accuracy: 0.5686
+  F1 Score: 0.5954
+  Precision: 0.5450
+  Recall: 0.6648
+
+Best fold (Fold 4):
+  Test Accuracy: 0.6857
+  Test F1 Score: 0.6901
+  Test Precision: 0.6533
+  Test Recall: 0.7313
+
+Detailed results by fold:
+Fold 4:
+  Test Accuracy: 0.6857
+  Test F1 Score: 0.6901
+  Test Precision: 0.6533
+  Test Recall: 0.7313
+  Val Loss: 0.3391
+  Combined Score: 0.6841
+
+Fold 3:
+  Test Accuracy: 0.6429
+  Test F1 Score: 0.6429
+  Test Precision: 0.6164
+  Test Recall: 0.6716
+  Val Loss: 0.3386
+  Combined Score: 0.6485
+
+Fold 2:
+  Test Accuracy: 0.5286
+  Test F1 Score: 0.5976
+  Test Precision: 0.5052
+  Test Recall: 0.7313
+  Val Loss: 0.3530
+  Combined Score: 0.6050
+
+Fold 5:
+  Test Accuracy: 0.4786
+  Test F1 Score: 0.5576
+  Test Precision: 0.4646
+  Test Recall: 0.6970
+  Val Loss: 0.3057
+  Combined Score: 0.5796
+
+Fold 1:
+  Test Accuracy: 0.5071
+  Test F1 Score: 0.4889
+  Test Precision: 0.4853
+  Test Recall: 0.4925
+  Val Loss: 0.3449
+  Combined Score: 0.5637
+

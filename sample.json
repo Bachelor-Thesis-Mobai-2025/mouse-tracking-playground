@@ -1,0 +1,45 @@
+{
+    "sequence_id": 1742810679465,
+    "label": "deceptive",
+    "trajectory_metrics": {
+      "decision_path_efficiency": 0.862515447619325,
+      "final_decision_path_efficiency": 0.862515447619325,
+      "total_time": 7.359,
+      "hesitation_time": 3.024,
+      "time_to_first_movement": 0.9,
+      "hesitation_count": 1,
+      "direction_changes": 30,
+      "hover_time": 3.024,
+      "hover_count": 1,
+      "total_pause_time": 6.16,
+      "pause_count": 31,
+      "answer_changes": 0
+    },
+    "trajectory": [
+      {
+        "timestamp": 1742810679469,
+        "x": 968,
+        "y": 773,
+        "dx": 0,
+        "dy": -1,
+        "velocity": 100,
+        "acceleration": 0,
+        "curvature": 0,
+        "jerk": 0,
+        "click": 0
+      },
+      /* 672 Addditional entries, truncated for bevity */
+      {
+        "timestamp": 1742810686193,
+        "x": 986,
+        "y": 732,
+        "dx": 0,
+        "dy": 0,
+        "velocity": 0,
+        "acceleration": 0,
+        "curvature": 0,
+        "jerk": 0,
+        "click": 1
+      }
+    ]
+  }

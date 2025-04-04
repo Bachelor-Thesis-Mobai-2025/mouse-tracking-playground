@@ -1,0 +1,293 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 950">
+  <!-- Background -->
+  <rect width="1200" height="950" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="600" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Mouse Movement Deception Detector: Neural Architecture</text>
+  
+  <!-- Architecture with detailed components -->
+  <g transform="translate(40, 80)">
+    <!-- Main flow - Data Pathway -->
+    <g>
+      <!-- Input Data Section -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="140" height="130" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5" />
+        <text x="70" y="30" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Input Data</text>
+        
+        <rect x="20" y="45" width="100" height="25" fill="#bae7ff" stroke="#333" stroke-width="1" rx="2" ry="2" />
+        <text x="70" y="62" font-family="Arial" font-size="12" text-anchor="middle">Sequence Data</text>
+        
+        <rect x="20" y="80" width="100" height="25" fill="#91d5ff" stroke="#333" stroke-width="1" rx="2" ry="2" />
+        <text x="70" y="97" font-family="Arial" font-size="12" text-anchor="middle">Global Features</text>
+        
+        <!-- Dimension labels (inside blocks) -->
+        <text x="70" y="120" font-family="Arial" font-size="10" text-anchor="middle">[batch, seq_len, 14]</text>
+      </g>
+
+      <!-- Dimension labels (outside blocks) -->
+        <text x="280" y="85" font-family="Arial" font-size="10" text-anchor="middle">[batch, 10]</text>
+      
+      <!-- Sequence Processing Branch -->
+      <g>
+        <!-- 1D CNN Section -->
+        <g transform="translate(0, 160)">
+          <rect x="0" y="0" width="140" height="260" fill="#f0f8ff" stroke="#4682b4" stroke-width="2" rx="5" ry="5" />
+          <text x="70" y="30" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">1D CNN Blocks</text>
+          
+          <!-- CNN Block 1 -->
+          <rect x="20" y="45" width="100" height="22" fill="#f9d5e5" stroke="#333" stroke-width="1" rx="2" ry="2" />
+          <text x="70" y="61" font-family="Arial" font-size="12" text-anchor="middle">Conv1D (14→16)</text>
+          
+          <rect x="20" y="72" width="100" height="18" fill="#e3eaa7" stroke="#333" stroke-width="1" rx="2" ry="2" />
+          <text x="70" y="85" font-family="Arial" font-size="11" text-anchor="middle">BatchNorm+ReLU</text>
+          
+          <rect x="20" y="95" width="100" height="18" fill="#b5e7a0" stroke="#333" stroke-width="1" rx="2" ry="2" />
+          <text x="70" y="108" font-family="Arial" font-size="11" text-anchor="middle">Dropout (0.5)</text>
+          
+          <!-- CNN Block 2 -->
+          <rect x="20" y="118" width="100" height="18" fill="#f9d5e5" stroke="#333" stroke-width="1" rx="2" ry="2" />
+          <text x="70" y="131" font-family="Arial" font-size="11" text-anchor="middle">Conv1D (16→32)</text>
+          
+          <rect x="20" y="141" width="100" height="18" fill="#e3eaa7" stroke="#333" stroke-width="1" rx="2" ry="2" />
+          <text x="70" y="154" font-family="Arial" font-size="11" text-anchor="middle">BatchNorm+ReLU</text>
+          
+          <!-- CNN Block 3 -->
+          <rect x="20" y="164" width="100" height="18" fill="#f9d5e5" stroke="#333" stroke-width="1" rx="2" ry="2" />
+          <text x="70" y="177" font-family="Arial" font-size="11" text-anchor="middle">Conv1D (32→64)</text>
+          
+          <rect x="20" y="187" width="100" height="18" fill="#e3eaa7" stroke="#333" stroke-width="1" rx="2" ry="2" />
+          <text x="70" y="200" font-family="Arial" font-size="11" text-anchor="middle">BatchNorm+ReLU</text>
+          
+          <!-- CNN Block 4 -->
+          <rect x="20" y="210" width="100" height="18" fill="#f9d5e5" stroke="#333" stroke-width="1" rx="2" ry="2" />
+          <text x="70" y="223" font-family="Arial" font-size="11" text-anchor="middle">Conv1D (64→128)</text>
+          
+          <!-- Dimension label for CNN output (inside block) -->
+          <text x="70" y="245" font-family="Arial" font-size="10" text-anchor="middle">[batch, seq_len, 128]</text>
+        </g>
+        
+        <!-- GRU Section -->
+        <g transform="translate(200, 160)">
+          <rect x="0" y="0" width="140" height="130" fill="#e6fffb" stroke="#13c2c2" stroke-width="2" rx="5" ry="5" />
+          <text x="70" y="30" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">GRU</text>
+          <text x="70" y="55" font-family="Arial" font-size="12" text-anchor="middle">9 Layers</text>
+          <text x="70" y="75" font-family="Arial" font-size="12" text-anchor="middle">hidden_dim=256</text>
+          <text x="70" y="95" font-family="Arial" font-size="12" text-anchor="middle">Bidirectional</text>
+          
+          <!-- Dimension label for GRU output (inside block) -->
+          <text x="70" y="115" font-family="Arial" font-size="10" text-anchor="middle">[batch, seq_len, 512]</text>
+        </g>
+        
+        <!-- Layer Norm Section -->
+        <g transform="translate(200, 300)">
+          <rect x="0" y="0" width="140" height="60" fill="#fff0f6" stroke="#eb2f96" stroke-width="2" rx="5" ry="5" />
+          <text x="70" y="20" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Layer Norm</text>
+          <text x="70" y="38" font-family="Arial" font-size="11" text-anchor="middle">(hidden_dim * 2)</text>
+          
+          <!-- Dimension label -->
+          <text x="70" y="50" font-family="Arial" font-size="10" text-anchor="middle">[batch, seq_len, 512]</text>
+        </g>
+        
+        <!-- Attention Mechanism -->
+        <g transform="translate(200, 370)">
+          <rect x="0" y="0" width="140" height="110" fill="#f9f0ff" stroke="#722ed1" stroke-width="2" rx="5" ry="5" />
+          <text x="70" y="20" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Attention</text>
+          <text x="70" y="40" font-family="Arial" font-size="11" text-anchor="middle">Linear (512→256)</text>
+          <text x="70" y="60" font-family="Arial" font-size="11" text-anchor="middle">Tanh</text>
+          <text x="70" y="80" font-family="Arial" font-size="11" text-anchor="middle">Linear (256→1)</text>
+          
+          <!-- Dimension label for Attention output (inside block) -->
+          <text x="70" y="98" font-family="Arial" font-size="10" text-anchor="middle">[batch, 512]</text>
+        </g>
+      </g>
+      
+      <!-- Global Feature Processing (right branch) -->
+      <g transform="translate(400, 160)">
+        <rect x="0" y="0" width="140" height="170" fill="#fff1f0" stroke="#f5222d" stroke-width="2" rx="5" ry="5" />
+        <text x="70" y="30" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Global Features</text>
+        
+        <rect x="20" y="45" width="100" height="22" fill="#ffd6e7" stroke="#333" stroke-width="1" rx="2" ry="2" />
+        <text x="70" y="61" font-family="Arial" font-size="12" text-anchor="middle">Linear (10→128)</text>
+        
+        <rect x="20" y="72" width="100" height="22" fill="#ffd6e7" stroke="#333" stroke-width="1" rx="2" ry="2" />
+        <text x="70" y="88" font-family="Arial" font-size="12" text-anchor="middle">Linear (128→128)</text>
+        
+        <rect x="20" y="99" width="100" height="18" fill="#e3eaa7" stroke="#333" stroke-width="1" rx="2" ry="2" />
+        <text x="70" y="112" font-family="Arial" font-size="11" text-anchor="middle">Layer Norm</text>
+        
+        <rect x="20" y="122" width="100" height="18" fill="#b5e7a0" stroke="#333" stroke-width="1" rx="2" ry="2" />
+        <text x="70" y="135" font-family="Arial" font-size="11" text-anchor="middle">Dropout (0.5)</text>
+        
+        <!-- Better residual connection visualization -->
+        <path d="M 119,55 L 132,55 L 132,88 L 120,88" stroke="#f5222d" stroke-width="2.5" stroke-dasharray="5,3" fill="none" />
+        
+        <!-- Dimension label for output (inside block) -->
+        <text x="70" y="155" font-family="Arial" font-size="10" text-anchor="middle">[batch, 128]</text>
+      </g>
+      
+      <!-- Concatenation node -->
+      <g transform="translate(300, 500)">
+        <rect x="-20" y="0" width="180" height="75" fill="#fffbe6" stroke="#faad14" stroke-width="2" rx="5" ry="5" />
+        <text x="70" y="25" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Concatenate</text>
+        <text x="70" y="45" font-family="Arial" font-size="11" text-anchor="middle">(512 + 128)</text>
+        
+        <!-- Dimension label for concatenated features (inside block) -->
+        <text x="70" y="65" font-family="Arial" font-size="10" text-anchor="middle">[batch, 640]</text>
+      </g>
+      
+      <!-- Classifier Section -->
+      <g transform="translate(300, 585)">
+        <rect x="-20" y="0" width="180" height="180" fill="#fff0f6" stroke="#eb2f96" stroke-width="2" rx="5" ry="5" />
+        <text x="70" y="25" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Classifier</text>
+        
+        <rect x="20" y="40" width="100" height="22" fill="#d3bccc" stroke="#333" stroke-width="1" rx="2" ry="2" />
+        <text x="70" y="56" font-family="Arial" font-size="12" text-anchor="middle">Linear (640→256)</text>
+        
+        <rect x="20" y="67" width="100" height="22" fill="#d3bccc" stroke="#333" stroke-width="1" rx="2" ry="2" />
+        <text x="70" y="83" font-family="Arial" font-size="12" text-anchor="middle">Linear (256→128)</text>
+        
+        <rect x="20" y="94" width="100" height="22" fill="#d3bccc" stroke="#333" stroke-width="1" rx="2" ry="2" />
+        <text x="70" y="110" font-family="Arial" font-size="12" text-anchor="middle">Linear (128→64)</text>
+        
+        <rect x="20" y="121" width="100" height="22" fill="#d3bccc" stroke="#333" stroke-width="1" rx="2" ry="2" />
+        <text x="70" y="137" font-family="Arial" font-size="12" text-anchor="middle">Linear (64→2)</text>
+        
+        <!-- Add BatchNorm and ReLU labels -->
+        <text x="70" y="155" font-family="Arial" font-size="10" text-anchor="middle">BatchNorm + ReLU after each layer</text>
+        
+        <!-- Dimension label for classifier output (inside block) -->
+        <text x="70" y="170" font-family="Arial" font-size="10" text-anchor="middle">[batch, 2]</text>
+      </g>
+      
+      <!-- Output Section -->
+      <g transform="translate(300, 775)">
+        <rect x="-20" y="0" width="180" height="60" fill="#ffd8bf" stroke="#fa8c16" stroke-width="2" rx="5" ry="5" />
+        <text x="70" y="25" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Output</text>
+        <text x="70" y="45" font-family="Arial" font-size="14" text-anchor="middle">2 Classes</text>
+      </g>
+    </g>
+    
+    <!-- Supplementary Info - Right Side -->
+    <g transform="translate(600, 0)">
+      <!-- Training components -->
+      <g transform="translate(0, 0)">
+        <text x="0" y="30" font-family="Arial" font-size="18" font-weight="bold">Training Components:</text>
+        
+        <rect x="0" y="40" width="500" height="180" fill="#f9f0ff" stroke="#722ed1" stroke-width="2" rx="5" ry="5" />
+        
+        <text x="20" y="70" font-family="Arial" font-size="16" font-weight="bold">Loss Function:</text>
+        <text x="160" y="70" font-family="Arial" font-size="14">Focal Loss (α=2.0, γ=2.0, class_weights)</text>
+        
+        <text x="20" y="100" font-family="Arial" font-size="16" font-weight="bold">Optimizer:</text>
+        <text x="160" y="100" font-family="Arial" font-size="14">AdamW (lr=2e-4, weight_decay=1e-5)</text>
+        
+        <text x="20" y="130" font-family="Arial" font-size="16" font-weight="bold">Scheduler:</text>
+        <text x="160" y="130" font-family="Arial" font-size="14">CosineAnnealingWarmRestarts (T₀=10, η_min=1e-6)</text>
+        
+        <text x="20" y="160" font-family="Arial" font-size="16" font-weight="bold">Early Stopping:</text>
+        <text x="160" y="160" font-family="Arial" font-size="14">15 epochs patience</text>
+        
+        <text x="20" y="190" font-family="Arial" font-size="16" font-weight="bold">Data Balancing:</text>
+        <text x="160" y="190" font-family="Arial" font-size="14">SMOTE + Class Weights</text>
+      </g>
+      
+      <!-- Data Processing -->
+      <g transform="translate(0, 240)">
+        <text x="0" y="30" font-family="Arial" font-size="18" font-weight="bold">Input Features:</text>
+        
+        <rect x="0" y="40" width="500" height="280" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5" />
+        
+        <text x="20" y="70" font-family="Arial" font-size="16" font-weight="bold">Sequence Features (14):</text>
+        <text x="20" y="95" font-family="Arial" font-size="13">• x, y (normalized position)</text>
+        <text x="20" y="120" font-family="Arial" font-size="13">• velocity, acceleration</text>
+        <text x="20" y="145" font-family="Arial" font-size="13">• velocity change, acceleration change</text>
+        <text x="20" y="170" font-family="Arial" font-size="13">• jerk, curvature</text>
+        <text x="20" y="195" font-family="Arial" font-size="13">• dx, dy (direction)</text>
+        <text x="20" y="220" font-family="Arial" font-size="13">• direction change, pause detection</text>
+        <text x="20" y="245" font-family="Arial" font-size="13">• normalized time, click detection</text>
+        
+        <text x="265" y="70" font-family="Arial" font-size="16" font-weight="bold">Global Features (10):</text>
+        <text x="265" y="95" font-family="Arial" font-size="13">• decision_path_efficiency</text>
+        <text x="265" y="120" font-family="Arial" font-size="13">• final_decision_path_efficiency</text>
+        <text x="265" y="145" font-family="Arial" font-size="13">• total_time, direction_changes</text>
+        <text x="265" y="170" font-family="Arial" font-size="13">• pause_count, hesitation_time</text>
+        <text x="265" y="195" font-family="Arial" font-size="13">• time_to_first_movement</text>
+        <text x="265" y="220" font-family="Arial" font-size="13">• hesitation_count, hover_time</text>
+        <text x="265" y="245" font-family="Arial" font-size="13">• total_pause_time</text>
+        
+        <text x="20" y="280" font-family="Arial" font-size="16" font-weight="bold">Cross-Validation:</text>
+        <text x="170" y="280" font-family="Arial" font-size="14">5-fold stratified cross-validation</text>
+        
+        <text x="20" y="305" font-family="Arial" font-size="16" font-weight="bold">Batch Size:</text>
+        <text x="170" y="305" font-family="Arial" font-size="14">8</text>
+      </g>
+      
+      <!-- Legend - moved down -->
+      <g transform="translate(0, 580)">
+        <text x="0" y="30" font-family="Arial" font-size="18" font-weight="bold">Legend:</text>
+        
+        <g>
+          <rect x="20" y="50" width="20" height="20" fill="#f9d5e5" stroke="#333" stroke-width="1" rx="2" ry="2" />
+          <text x="50" y="65" font-family="Arial" font-size="14">Convolutional Layer</text>
+          
+          <rect x="20" y="80" width="20" height="20" fill="#e3eaa7" stroke="#333" stroke-width="1" rx="2" ry="2" />
+          <text x="50" y="95" font-family="Arial" font-size="14">Normalization Layers</text>
+          
+          <rect x="20" y="110" width="20" height="20" fill="#b5e7a0" stroke="#333" stroke-width="1" rx="2" ry="2" />
+          <text x="50" y="125" font-family="Arial" font-size="14">Dropout</text>
+          
+          <rect x="20" y="140" width="20" height="20" fill="#d3bccc" stroke="#333" stroke-width="1" rx="2" ry="2" />
+          <text x="50" y="155" font-family="Arial" font-size="14">Linear Layer</text>
+          
+          <rect x="20" y="170" width="20" height="20" fill="#e6fffb" stroke="#13c2c2" stroke-width="2" rx="5" ry="5" />
+          <text x="50" y="185" font-family="Arial" font-size="14">GRU</text>
+          
+          <rect x="20" y="200" width="20" height="20" fill="#f9f0ff" stroke="#722ed1" stroke-width="2" rx="5" ry="5" />
+          <text x="50" y="215" font-family="Arial" font-size="14">Attention Mechanism</text>
+        </g>
+          
+        <g transform="translate(220, 0)">
+          <rect x="20" y="50" width="20" height="20" fill="#fff0f6" stroke="#eb2f96" stroke-width="2" rx="5" ry="5" />
+          <text x="50" y="65" font-family="Arial" font-size="14">Classifier Blocks</text>
+          
+          <rect x="20" y="80" width="20" height="20" fill="#fff1f0" stroke="#f5222d" stroke-width="2" rx="5" ry="5" />
+          <text x="50" y="95" font-family="Arial" font-size="14">Feature Processing</text>
+          
+          <rect x="20" y="110" width="20" height="20" fill="#fffbe6" stroke="#faad14" stroke-width="2" rx="5" ry="5" />
+          <text x="50" y="125" font-family="Arial" font-size="14">Feature Fusion</text>
+          
+          <rect x="20" y="140" width="20" height="20" fill="#ffd8bf" stroke="#fa8c16" stroke-width="2" rx="5" ry="5" />
+          <text x="50" y="155" font-family="Arial" font-size="14">Output Layer</text>
+          
+          <rect x="20" y="170" width="20" height="20" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5" />
+          <text x="50" y="185" font-family="Arial" font-size="14">Input Data</text>
+          
+          <path d="M 20,210 L 40,210" stroke="#f5222d" stroke-width="2.5" stroke-dasharray="5,3" />
+          <text x="50" y="215" font-family="Arial" font-size="14">Residual Connection</text>
+        </g>
+      </g>
+    </g>
+    
+    <!-- Arrows connecting blocks -->
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+      </marker>
+    </defs>
+
+    <!-- Sequence data flow -->
+    <line x1="70" y1="130" x2="70" y2="160" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="140" y1="220" x2="200" y2="220" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="270" y1="290" x2="270" y2="300" stroke="#333" stroke-width="1" marker-end="url(#arrow)" />
+    <line x1="270" y1="360" x2="270" y2="370" stroke="#333" stroke-width="1" marker-end="url(#arrow)" />
+    <line x1="310" y1="480" x2="310" y2="499" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+    
+    <!-- Global features flow - modified to go right then down -->
+    <path d="M 120,95 L 470,95 L 470,160" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+    <line x1="430" y1="330" x2="430" y2="500" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+    
+    <!-- Final classification flow -->
+    <line x1="370" y1="575" x2="370" y2="585" stroke="#333" stroke-width="1" marker-end="url(#arrow)" />
+    <line x1="370" y1="765" x2="370" y2="775" stroke="#333" stroke-width="1" marker-end="url(#arrow)" />
+  </g>
+</svg>
