@@ -53,7 +53,7 @@ The repository contains multiple data collections and processing results:
 ├── train.py                                # Base training script
 ├── train_GRU.py                            # GRU model training script
 ├── train_LSTM.py                           # LSTM model training script
-├── train_optim_GRU_SMOTE.py                # Optimized GRU with SMOTE copy
+├── train_optim_GRU_SMOTE.py                # Optimized GRU with SMOTE
 ├── train_optim_GRU_SMOTE_v3.py             # Optimized GRU with SMOTE v3
 ├── truncate.py                             # Trajectory preprocessing
 └── truncate_ext.py                         # Extended trajectory preprocessing
