@@ -33,7 +33,7 @@ The repository contains multiple data collections and processing results:
 ├── data_new/                               # Newer data collection
 ├── data_new_truncated/                     # Truncated newer data
 ├── data_new_truncated_final/               # Final truncated dataset
-├── feature_analysis/                          # Feature visualization plots
+├── feature_analysis/                       # Feature visualization plots
 ├── *_graphs/                               # Various graph collections
 ├── images/                                 # Layout and visualization images
 ├── logs_*/                                 # Different model training logs (GRU, LSTM, SMOTE variants)
