@@ -1,6 +1,7 @@
 import os
 import json
 
+
 def truncate_trajectory_after_last_click(input_folder="data_new", output_folder="data_new_truncated"):
     """
     Recursively walks through `input_folder` and its subfolders,
@@ -42,6 +43,7 @@ def truncate_trajectory_after_last_click(input_folder="data_new", output_folder=
                 # Write out the truncated file
                 with open(output_file, "w", encoding="utf-8") as out_f:
                     json.dump(data, out_f, ensure_ascii=False, indent=2)
+
 
 if __name__ == "__main__":
     folder_name = "data_new_doubled"

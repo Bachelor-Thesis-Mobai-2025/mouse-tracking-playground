@@ -3,8 +3,6 @@ __pycache__
 .idea
 *.csv
 *.json
-.env
-*.pdf
 data_csv
 !sample.json
 !feature_analysis/feature_importance.csv

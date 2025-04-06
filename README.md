@@ -163,7 +163,7 @@ The system captures a comprehensive set of mouse movement features:
    python app.py
    ```
 
-5. **Visualize data and model results**
+5. **Visualize collected data**
    ```bash
    python display.py
    ```

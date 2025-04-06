@@ -1018,10 +1018,6 @@ def train_for_folder(folder_name, use_smote=True):
             f.write(f"  Recall: {avg_recall:.4f}\n\n")
 
             f.write(f"Best fold (Fold {best_fold['fold']}):\n")
-            f.write(f"  Test Accuracy: {best_fold['test_acc']:.4f}\n")
-            f.write(f"  Test F1 Score: {best_fold['test_f1']:.4f}\n")
-            f.write(f"  Test Precision: {best_fold['test_precision']:.4f}\n")
-            f.write(f"  Test Recall: {best_fold['test_recall']:.4f}\n\n")
 
             f.write("Detailed results by fold:\n")
             for fold in sorted_folds:
