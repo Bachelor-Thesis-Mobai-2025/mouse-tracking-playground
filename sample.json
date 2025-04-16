@@ -1,45 +1,112 @@
 {
-    "sequence_id": 1742810679465,
-    "label": "deceptive",
-    "trajectory_metrics": {
-      "decision_path_efficiency": 0.862515447619325,
-      "final_decision_path_efficiency": 0.862515447619325,
-      "total_time": 7.359,
-      "hesitation_time": 3.024,
-      "time_to_first_movement": 0.9,
-      "hesitation_count": 1,
-      "direction_changes": 30,
-      "hover_time": 3.024,
-      "hover_count": 1,
-      "total_pause_time": 6.16,
-      "pause_count": 31,
-      "answer_changes": 0
+  // Unique identifier for this data collection sequence (timestamp when trajectory was started)
+  "sequence_id": 1742810679465,
+  
+  // Classification of the response pattern - could be "truthful", "deceptive", etc.
+  "label": "deceptive",
+  
+  // Summary metrics calculated from the entire mouse trajectory
+  "trajectory_metrics": {
+    // Ratio of direct distance to actual path length up to first decision
+    // Calculated as (straight line distance) / (actual path traveled)
+    // Range: 0-1 where 1 = perfectly straight path
+    "decision_path_efficiency": 0.862515447619325,
+    
+    // Ratio of direct distance to actual path length up to final decision
+    // Same calculation as decision_path_efficiency but includes path up to the last click
+    "final_decision_path_efficiency": 0.862515447619325,
+    
+    // Total time spent on the question in seconds
+    // Calculated as (last trajectory timestamp - first trajectory timestamp) / 1000
+    "total_time": 7.359,
+    
+    // Time spent hovering over buttons in seconds (same as hover_time)
+    // Sum of all time periods when mouse was over Yes or No buttons
+    "hesitation_time": 3.024,
+    
+    // Time in seconds between question appearance and first mouse movement
+    // Calculated as (firstMovementTime - questionStartTime) / 1000
+    "time_to_first_movement": 0.9,
+    
+    // Number of times mouse entered button areas (same as hover_count)
+    // Sum of buttonHoverData.yes.enterCount and buttonHoverData.no.enterCount
+    "hesitation_count": 1,
+    
+    // Number of significant mouse direction changes
+    // Incremented when angle of movement changes by 45 degrees or more
+    "direction_changes": 30,
+    
+    // Total time spent hovering over Yes and No buttons in seconds
+    // Calculated as (buttonHoverData.yes.totalTime + buttonHoverData.no.totalTime) / 1000
+    "hover_time": 3.024,
+    
+    // Number of times mouse entered Yes or No button areas
+    // Sum of buttonHoverData.yes.enterCount and buttonHoverData.no.enterCount
+    "hover_count": 1,
+    
+    // Total time in seconds when mouse was not moving
+    // Sum of all pauses where mouse didn't move for at least 10ms
+    "total_pause_time": 6.16,
+    
+    // Number of times mouse paused (didn't move for at least 10ms)
+    "pause_count": 31,
+    
+    // Number of times answer was changed (clicked on different button)
+    // Incremented each time a button is clicked after first decision
+    "answer_changes": 0
+  },
+  
+  // Complete mouse trajectory data sampled at 100Hz (every 10ms)
+  "trajectory": [
+    {
+      // Time when this data point was recorded (milliseconds since epoch)
+      "timestamp": 1742810679469,
+      
+      // X-coordinate of mouse position (pixels from left edge)
+      "x": 968,
+      
+      // Y-coordinate of mouse position (pixels from top edge)
+      "y": 773,
+      
+      // Change in X position since last recording (pixels)
+      "dx": 0,
+      
+      // Change in Y position since last recording (pixels)
+      "dy": -1,
+      
+      // Mouse movement speed in pixels per second
+      // Calculated as sqrt(dx^2 + dy^2) / (samplingInterval / 1000)
+      "velocity": 100,
+      
+      // Rate of change in velocity (pixels/second^2)
+      // Smoothed using velocity buffer and linear regression
+      "acceleration": 0,
+      
+      // Measure of how curved the mouse path is at this point
+      // Calculated from cross product of vectors between 3 consecutive points
+      // Higher values indicate sharper curves
+      "curvature": 0,
+      
+      // Rate of change in acceleration (pixels/second^3)
+      // Calculated from changes in acceleration between time steps
+      "jerk": 0,
+      
+      // Whether a click occurred at this point (1 = click, 0 = no click)
+      "click": 0
     },
-    "trajectory": [
-      {
-        "timestamp": 1742810679469,
-        "x": 968,
-        "y": 773,
-        "dx": 0,
-        "dy": -1,
-        "velocity": 100,
-        "acceleration": 0,
-        "curvature": 0,
-        "jerk": 0,
-        "click": 0
-      },
-      /* 672 Addditional entries, truncated for bevity */
-      {
-        "timestamp": 1742810686193,
-        "x": 986,
-        "y": 732,
-        "dx": 0,
-        "dy": 0,
-        "velocity": 0,
-        "acceleration": 0,
-        "curvature": 0,
-        "jerk": 0,
-        "click": 1
-      }
-    ]
-  }
+    /* 672 Additional entries, truncated for brevity */
+    {
+      "timestamp": 1742810686193,
+      "x": 986,
+      "y": 732,
+      "dx": 0,
+      "dy": 0,
+      "velocity": 0,
+      "acceleration": 0,
+      "curvature": 0,
+      "jerk": 0,
+      // This 1 indicates the user clicked at this position (making a decision)
+      "click": 1
+    }
+  ]
+}
